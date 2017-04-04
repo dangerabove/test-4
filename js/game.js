@@ -1,8 +1,10 @@
 var game = new Phaser.Game(800, 600, Phaser.AUTO);
-
-var fireRate = 400;
-var nextFire = 0;
 var ay="lmao";
+var krem;
+var tow;
+var czipsy;
+var bullets;
+
 
 var GameState = {
   preload: function() {
@@ -10,6 +12,7 @@ var GameState = {
     this.load.image('worker', 'obj/player.png');
     this.load.image('duda', 'obj/dude.jpg');
     this.load.image('krem', 'obj/krem.png');
+    this.load.image('dori', 'obj/doritos.png');
   },
 
   create: function() {
@@ -27,28 +30,32 @@ var GameState = {
     dude.anchor.setTo(0.5, 0.5);
     game.physics.arcade.enable(dude);
 
-    bullet = game.add.group();
-        bullet.enableBody = true;
-        bullet.scale.setTo(0.2, 0.2);
-        bullet.physicsBodyType = Phaser.Physics.ARCADE;
-        bullet.createMultiple(30, 'krem', 0, false);
-        bullet.setAll('anchor.x', 0.5);
-        bullet.setAll('anchor.y', 0.5);
-        bullet.setAll('outOfBoundsKill', true);
-        bullet.setAll('checkWorldBounds', true);
-        bullet.x = 400;
-        bullet.y = 100;
+    krem = game.add.weapon(1, 'krem');
+    krem.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
+    krem.bulletSpeed = 200;
+    krem.fireRate = 240;
+    krem.bulletAngleVariance = 25;
+    krem.trackSprite(dude, 14, 0);
+    game.physics.arcade.enable(krem.bullets);
+
+    czipsy = game.add.weapon(30, 'dori');
+    czipsy.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
+    czipsy.bulletSpeed = 250;
+    czipsy.fireRate = 2000;
+    czipsy.bulletAngleVariance = 33;
+    czipsy.trackSprite(dude, 14, 0);
 
     cursors = game.input.keyboard.createCursorKeys();
   },
 
   update: function() {
-    if (game.time.now > nextFire) {
-        nextFire = game.time.now + fireRate;
-        var shot = bullet.getFirstExists(false);
-        shot.reset(0 , 0);
-        game.physics.arcade.moveToXY(shot, tow.x-400, tow.y-100, 2000);
-      }
+    krem.fireAtSprite(tow);
+    czipsy.fireAtSprite(tow);
+
+    if(game.physics.arcade.collide(krem.bullets, tow)) {
+           console.log('You are dead, not big surprise.');
+           //krem.bullets.killAll();
+         }
 
     tow.body.velocity.x = 0;
     tow.body.velocity.y = 0;
