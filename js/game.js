@@ -4,7 +4,10 @@ var krem;
 var tow;
 var czipsy;
 var bullets;
-
+var score;
+var timer;
+var total = 0;
+var updateCounter;
 
 var GameState = {
   preload: function() {
@@ -45,17 +48,26 @@ var GameState = {
     czipsy.bulletAngleVariance = 33;
     czipsy.trackSprite(dude, 14, 0);
 
+    game.time.events.add(1000, this.end, this);
+
+
     cursors = game.input.keyboard.createCursorKeys();
+  },
+
+  end: function(){
+    console.log('end');
   },
 
   update: function() {
     krem.fireAtSprite(tow);
     czipsy.fireAtSprite(tow);
 
-    if(game.physics.arcade.collide(krem.bullets, tow)) {
+    game.physics.arcade.collide(krem, tow , function(bullet, tow){console.log('hit');});
+
+    /*if(game.physics.arcade.collide(krem.bullets, tow)) {
            console.log('You are dead, not big surprise.');
-           //krem.bullets.killAll();
-         }
+           krem.bullets.killAll();
+         }*/
 
     tow.body.velocity.x = 0;
     tow.body.velocity.y = 0;
