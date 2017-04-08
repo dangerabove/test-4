@@ -1,12 +1,12 @@
-var wynikangState = function(game){};
+var wynikwfState = function(game){};
 
-wynikangState.prototype = {
+wynikwfState.prototype = {
 	create: function() {
 
     var style = { font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
 
     //  The Text is positioned at 0, 100
-    text = game.add.text(80, 0, "Twoja ocena: " + Math.floor(wynikangol / 35), style);
+    text = game.add.text(80, 0, "Twoja ocena: " + Math.floor(6), style);
 		text1 = game.add.text(60, 200, 'NACIŚNIJ STRZAŁKĘ DO GÓRY ABY WRÓCIĆ DO MENU', style);
 
     //  We'll set the bounds to be from x0, y100 and be 800px wide by 100px high

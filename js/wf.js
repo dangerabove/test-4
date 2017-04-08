@@ -1,4 +1,4 @@
-var angolState = function(game){};
+var wfState = function(game){};
 
 var ay="lmao";
 var krem;
@@ -7,14 +7,14 @@ var czipsy;
 var bullets;
 var style = { font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
 var style1 = { font: "bold 32px Arial", fill: "#ff0000", boundsAlignH: "center", boundsAlignV: "middle" };
-var angtext;
-var angtext2;
-var angtext3;
+var wftext;
+var wftext2;
+var wftext3;
 var dif = 1;
 var eb1s = 400;
 var eb2s = 300;
 
-angolState.prototype = {
+wfState.prototype = {
 
   	create: function() {
     	game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -107,30 +107,30 @@ angolState.prototype = {
   },
 
     text1: function(){
-      angtext = game.add.text(90 , -100, "Ochotnicy? Nie ma? Wszyscy wigineli w Wietnamie.", style1);
-      angtext.setTextBounds(0, 100, 800, 100);
+      wftext = game.add.text(90 , -100, "Ochotnicy? Nie ma? Wszyscy wigineli w Wietnamie.", style1);
+      wftext.setTextBounds(0, 100, 800, 100);
     },
 
     text1Kill: function(){
-      angtext.kill();
+      wftext.kill();
     },
 
     text2: function(){
-      angtext2 = game.add.text(100, -100, "Credit for you!", style1);
-      angtext2.setTextBounds(0, 100, 800, 100);
+      wftext2 = game.add.text(100, -100, "Credit for you!", style1);
+      wftext2.setTextBounds(0, 100, 800, 100);
     },
 
     text2Kill: function(){
-      angtext2.kill();
+      wftext2.kill();
     },
 
     text3: function(){
-      angtext3 = game.add.text(100, -100, "Rozpoczynamy następne ogniwo lekcyjne...", style1);
-      angtext3.setTextBounds(0, 100, 800, 100);
+      wftext3 = game.add.text(100, -100, "Rozpoczynamy następne ogniwo lekcyjne...", style1);
+      wftext3.setTextBounds(0, 100, 800, 100);
     },
 
     text3Kill: function(){
-      angtext3.kill();
+      wftext3.kill();
     },
 
   	end: function(){
@@ -154,12 +154,12 @@ angolState.prototype = {
     };
     };
 
-    	game.physics.arcade.overlap(eweapon5.bullets, tow, function(kremy, worker){worker.kill(); console.log('dostales 1'); wynikangol -= 1;});
-      game.physics.arcade.overlap(eweapon2.bullets, tow, function(kremy, worker){worker.kill(); console.log('dostales 1'); wynikangol -= 1;});
-      game.physics.arcade.overlap(eweapon3.bullets, tow, function(kremy, worker){worker.kill(); console.log('dostales 1'); wynikangol -= 1;});
-      game.physics.arcade.overlap(eweapon4.bullets, tow, function(kremy, worker){worker.kill(); console.log('dostales 1'); wynikangol -= 1;});
-    	game.physics.arcade.overlap(eweapon1.bullets, tow, function(dori, worker){worker.kill(); console.log('dostales 5'); wynikangol -= 5});
-      game.physics.arcade.overlap(czipsy.bullets, tow, function(dori, worker){worker.kill(); console.log('dostales 5'); wynikangol += 5});
+    	game.physics.arcade.overlap(eweapon5.bullets, tow, function(kremy, worker){worker.kill(); console.log('dostales 1'); wynikangol = wynikangol - 1;});
+      game.physics.arcade.overlap(eweapon2.bullets, tow, function(kremy, worker){worker.kill(); console.log('dostales 1'); wynikangol = wynikangol - 1;});
+      game.physics.arcade.overlap(eweapon3.bullets, tow, function(kremy, worker){worker.kill(); console.log('dostales 1'); wynikangol = wynikangol - 1;});
+      game.physics.arcade.overlap(eweapon4.bullets, tow, function(kremy, worker){worker.kill(); console.log('dostales 1'); wynikangol = wynikangol - 1;});
+    	game.physics.arcade.overlap(eweapon1.bullets, tow, function(dori, worker){worker.kill(); console.log('dostales 5'); wynikangol = wynikangol + 5});
+      game.physics.arcade.overlap(czipsy.bullets, tow, function(dori, worker){worker.kill(); console.log('dostales 5'); wynikangol = wynikangol + 5});
 
     	tow.body.velocity.x = 0;
     	tow.body.velocity.y = 0;

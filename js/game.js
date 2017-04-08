@@ -9,12 +9,14 @@ var wynikwf = 0;
 game.state.add('init', initState);
 game.state.add('tgame', tgameState);
 game.state.add('score', scoreState);
+game.state.add('pp', podstawyState);
 game.state.add('fiza', fizaState);
 game.state.add('wynikfiz', wynikfizState);
 game.state.add('angol', angolState);
 game.state.add('wynikang', wynikangState);
-
-
+game.state.add('wynikpp', wynikpodstawyState);
+game.state.add('wf', wynikwfState);
+game.state.add('wynikwf', wynikwfState);
 //game.state.add('korzeb', korzebState);
 
 game.state.start('init');
