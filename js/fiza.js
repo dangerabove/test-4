@@ -156,12 +156,12 @@ fizaState.prototype = {
       };
       };
 
-      	game.physics.arcade.overlap(eweapon5.bullets, tow, function(kremy, worker){worker.kill(); console.log('dostales 1'); wynikangol = wynikangol - 1;});
-        game.physics.arcade.overlap(eweapon2.bullets, tow, function(kremy, worker){worker.kill(); console.log('dostales 1'); wynikangol = wynikangol - 1;});
-        game.physics.arcade.overlap(eweapon3.bullets, tow, function(kremy, worker){worker.kill(); console.log('dostales 1'); wynikangol = wynikangol - 1;});
-        game.physics.arcade.overlap(eweapon4.bullets, tow, function(kremy, worker){worker.kill(); console.log('dostales 1'); wynikangol = wynikangol - 1;});
-      	game.physics.arcade.overlap(eweapon1.bullets, tow, function(dori, worker){worker.kill(); console.log('dostales 5'); wynikangol = wynikangol + 5});
-        game.physics.arcade.overlap(czipsy.bullets, tow, function(dori, worker){worker.kill(); console.log('dostales 5'); wynikangol = wynikangol + 5});
+      	game.physics.arcade.overlap(eweapon5.bullets, tow, function(kremy, worker){worker.kill(); console.log('dostales 1'); wynikfiz += 2; ocenyfiz+=1;});
+        game.physics.arcade.overlap(eweapon2.bullets, tow, function(kremy, worker){worker.kill(); console.log('dostales 1'); wynikfiz += 2; ocenyfiz+=1;});
+        game.physics.arcade.overlap(eweapon3.bullets, tow, function(kremy, worker){worker.kill(); console.log('dostales 1'); wynikfiz += 2; ocenyfiz+=1;});
+        game.physics.arcade.overlap(eweapon4.bullets, tow, function(kremy, worker){worker.kill(); console.log('dostales 1'); wynikfiz += 2; ocenyfiz+=1;});
+      	game.physics.arcade.overlap(eweapon1.bullets, tow, function(dori, worker){worker.kill(); console.log('dostales 5'); wynikfiz += 5; ocenyfiz+=1;});
+        game.physics.arcade.overlap(czipsy.bullets, tow, function(dori, worker){worker.kill(); console.log('dostales 5'); wynikfiz += 5; ocenyfiz+=1;});
 
     	tow.body.velocity.x = 0;
     	tow.body.velocity.y = 0;

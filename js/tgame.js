@@ -90,8 +90,8 @@ tgameState.prototype = {
     	krem.fireAtSprite(tow);
     	czipsy.fireAtSprite(tow);
 
-    	game.physics.arcade.overlap(krem.bullets, tow, function(kremy, worker){worker.kill(); console.log('dostales 1'); wynikgegra = wynikgegra - 1;});
-    	game.physics.arcade.overlap(czipsy.bullets, tow, function(dori, worker){worker.kill(); console.log('dostales 5'); wynikgegra = wynikgegra + 5});
+    	game.physics.arcade.overlap(krem.bullets, tow, function(kremy, worker){worker.kill(); console.log('dostales 1'); wynikgegra += 1; ocenygeg+=1;});
+    	game.physics.arcade.overlap(czipsy.bullets, tow, function(dori, worker){worker.kill(); console.log('dostales 5'); wynikgegra += 5; ocenygeg+=1;});
 
     	tow.body.velocity.x = 0;
     	tow.body.velocity.y = 0;

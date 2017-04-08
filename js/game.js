@@ -1,10 +1,14 @@
 var game = new Phaser.Game(1000, 800, Phaser.AUTO);
 
 var wynikgegra = 0;
-var wynikfiza = 0;
+var wynikfiz = 0;
 var wynikangol = 0;
 var wynikpp = 0;
 var wynikwf = 0;
+var oceny = 0;
+var ocenyfiz = 0;
+var ocenypp = 0;
+var ocenygeg = 0;
 
 game.state.add('init', initState);
 game.state.add('tgame', tgameState);
