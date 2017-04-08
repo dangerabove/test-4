@@ -42,7 +42,7 @@ initState.prototype = {
 		//game.state.start('select');
 		background = game.add.sprite(0, 0, 'tlo');
 		var pic1 = this.add.sprite(100, 200, 'pic1');
-		var pic2 = this.add.sprite(400, 200, 'pic2');
+		var pic2 = this.add.sprite(400, 200, 'pic4');
 		var pic3 = this.add.sprite(700, 200, 'pic3');
 		//var pic4 = this.add.sprite(250, 500, 'pic4');
 		//var pic5 = this.add.sprite(550, 500, 'pic5');
