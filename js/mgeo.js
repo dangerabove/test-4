@@ -42,13 +42,13 @@ m_geoState.prototype = {
     	bul5.bulletAngleVariance = 33;
     	bul5.trackSprite(enemy, 0, -80);
 
-        game.time.events.add(500, this.text1, this);
-        game.time.events.add(6000, this.text1Kill, this);
-        game.time.events.add(17000, this.text2, this);
+        game.time.events.add(500  , this.text1    , this);
+        game.time.events.add(6000 , this.text1Kill, this);
+        game.time.events.add(17000, this.text2    , this);
         game.time.events.add(25000, this.text2Kill, this);
-        game.time.events.add(35000, this.text3, this);
+        game.time.events.add(35000, this.text3    , this);
         game.time.events.add(45000, this.text3Kill, this);
-    	game.time.events.add(60000, this.end, this);
+    	game.time.events.add(60000, this.end      , this);
 
     	cursors = game.input.keyboard.createCursorKeys();
   	},
@@ -58,48 +58,38 @@ m_geoState.prototype = {
       text1.setTextBounds(0, 100, 800, 100);
     },
 
-    text1Kill: function(){
-      text1.kill();
-    },
+    text1Kill: function(){text1.kill();},
 
     text2: function(){
       text2 = game.add.text(100, -50, "CZUJESZ TO???", style1);
       text2.setTextBounds(0, 100, 800, 100);
     },
 
-    text2Kill: function(){
-      text2.kill();
-    },
+    text2Kill: function(){text2.kill();},
 
     text3: function(){
       text3 = game.add.text(100, -50, "No dobre pomarańczowe no...", style1);
       text3.setTextBounds(0, 100, 800, 100);
     },
 
-    text3Kill: function(){
-      text3.kill();
-    },
+    text3Kill: function(){text3.kill();},
 
   	end: function(){
     	console.log('end');
-			game.state.start('s_geo');
+		game.state.start('s_geo');
   	},
 
   	update: function() {
     	bul1.fireAtSprite(player);
     	bul5.fireAtSprite(player);
 
-    	game.physics.arcade.overlap(bul1.bullets, player, function(sb1, splayer){splayer.kill(); console.log('dostales 1'); scrgeo += 1; cntgeo+=1;});
-    	game.physics.arcade.overlap(bul5.bullets, player, function(sb5, splayer){splayer.kill(); console.log('dostales 5'); scrgeo += 5; cntgeo+=1;});
+    	game.physics.arcade.overlap(bul1.bullets, player, function(sb1, splayer){splayer.kill(); console.log('dostales 1'); scrgeo += 2;});
+    	game.physics.arcade.overlap(bul5.bullets, player, function(sb5, splayer){splayer.kill(); console.log('dostales 5'); scrgeo += 5;});
 
     	player.body.velocity.x = 0;
     	player.body.velocity.y = 0;
 
-    	if(cursors.left.isDown) {
-      	player.body.velocity.x -= 250;
-    	}
-    	if(cursors.right.isDown) {
-      	player.body.velocity.x += 250;
-    	}
-  	}
-	};
+    	if(cursors.left.isDown)  {player.body.velocity.x -= 250;};
+    	if(cursors.right.isDown) {player.body.velocity.x += 250;};
+	}
+};

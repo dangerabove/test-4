@@ -72,104 +72,88 @@ m_angState.prototype = {
     if(dif = 1) {
     game.time.events.loop(1250, this.fire1, this);
     game.time.events.loop(1500, this.fire2, this);
-    game.time.events.add(4000, this.fire3, this);
-    game.time.events.add(7000, this.fire3, this)
+    game.time.events.add(4000 , this.fire3, this);
+    game.time.events.add(7000 , this.fire3, this);
     };
     if(dif = 2) {
     //game.time.events.loop(500, this.fire1, this);
     //game.time.events.loop(1000, this.fire2, this);
     };
 
-      game.time.events.add(500, this.text1, this);
-      game.time.events.add(6000, this.text1Kill, this);
-      game.time.events.add(17000, this.text2, this);
+      game.time.events.add(500  , this.text1    , this);
+      game.time.events.add(6000 , this.text1Kill, this);
+      game.time.events.add(17000, this.text2    , this);
       game.time.events.add(25000, this.text2Kill, this);
-      game.time.events.add(35000, this.text3, this);
+      game.time.events.add(35000, this.text3    , this);
       game.time.events.add(45000, this.text3Kill, this);
-    	game.time.events.add(60000, this.end, this);
+      game.time.events.add(60000, this.end      , this);
 
     	cursors = game.input.keyboard.createCursorKeys();
+		
+		
+		/*var slang = this.add.sprite(100, 200, 'slang');
+		slang.inputEnabled = true;
+		slang.events.onInputUp.add(this.end, this);*/
   	},
 
-    fire1: function() {
-    eweapon1.fireAtSprite(player);
-  },
+	fire1: function() {eweapon1.fireAtSprite(player);},
 
-  fire2: function() {
-    eweapon2.fireAtXY(player.x-240, player.y);
-    eweapon3.fireAtXY(player.x+240, player.y);
-    eweapon4.fireAtXY(player.x, player.y);
-  },
+	fire2: function() {
+		eweapon2.fireAtXY(player.x-240, player.y);
+		eweapon3.fireAtXY(player.x+240, player.y);
+		eweapon4.fireAtXY(player.x, player.y);
+	},
 
-  fire3: function() {
-    eweapon2.fireAtXY(250, 450);
-    eweapon3.fireAtXY(400, 450);
-    eweapon4.fireAtXY(550, 450);
-  },
+	fire3: function() {
+		eweapon2.fireAtXY(250, 450);
+		eweapon3.fireAtXY(400, 450);
+		eweapon4.fireAtXY(550, 450);
+    },
 
     text1: function(){
       pptext1 = game.add.text(120 , -70, "Ochotnicy? Nie ma? Wszyscy wygineli w Wietnamie...", style1);
       pptext1.setTextBounds(0, 100, 800, 100);
     },
 
-    text1Kill: function(){
-      pptext1.kill();
-    },
+    text1Kill: function(){pptext1.kill();},
 
     text2: function(){
       pptext2 = game.add.text(120, -70, "Credit for you!", style1);
       pptext2.setTextBounds(0, 100, 800, 100);
     },
 
-    text2Kill: function(){
-      pptext2.kill();
-    },
+    text2Kill: function(){pptext2.kill();},
 
     text3: function(){
       pptext3 = game.add.text(120, -70, "Rozpoczynamy następne ogniwo lekcyjne...", style1);
       pptext3.setTextBounds(0, 100, 800, 100);
     },
 
-    text3Kill: function(){
-      pptext3.kill();
-    },
+    text3Kill: function(){pptext3.kill();},
 
   	end: function(){
     	console.log('end');
-			game.state.start('s_ang');
+		game.state.start('s_ang');
   	},
 
   	update: function() {
 
         bul5.fireAtSprite(player);
 
-        if(dif = 1) {
-      if(eweapon1.fireRate > 401) {
-      eweapon1.fireRate -= 1;
-      };
-      };
+		if(dif = 1) {if(eweapon1.fireRate > 401) {eweapon1.fireRate -= 1   ;};};
+		if(dif = 2) {if(eweapon1.fireRate > 351) {eweapon1.fireRate -= 1.25;};};
 
-      if(dif = 2) {
-      if(eweapon1.fireRate > 351) {
-      eweapon1.fireRate -= 1.25;
-      };
-      };
-
-      	game.physics.arcade.overlap(eweapon5.bullets, player, function(sb1, splayer){splayer.kill(); console.log('dostales 1'); scrang += 2; cntang +=1;});
-        game.physics.arcade.overlap(eweapon2.bullets, player, function(sb1, splayer){splayer.kill(); console.log('dostales 1'); scrang += 2; cntang +=1;});
-        game.physics.arcade.overlap(eweapon3.bullets, player, function(sb1, splayer){splayer.kill(); console.log('dostales 1'); scrang += 2; cntang +=1;});
-        game.physics.arcade.overlap(eweapon4.bullets, player, function(sb1, splayer){splayer.kill(); console.log('dostales 1'); scrang += 2; cntang +=1;});
-      	game.physics.arcade.overlap(eweapon1.bullets, player, function(sb5, splayer){splayer.kill(); console.log('dostales 5'); scrang += 2; cntang +=1;});
-        game.physics.arcade.overlap(bul5.bullets,     player, function(sb5, splayer){splayer.kill(); console.log('dostales 5'); scrang += 5; cntang +=1;});
+      	game.physics.arcade.overlap(eweapon1.bullets, player, function(sb1, splayer){splayer.kill(); console.log('dostales 1'); scrang -= 2;});
+        game.physics.arcade.overlap(eweapon2.bullets, player, function(sb1, splayer){splayer.kill(); console.log('dostales 1'); scrang -= 2;});
+        game.physics.arcade.overlap(eweapon3.bullets, player, function(sb1, splayer){splayer.kill(); console.log('dostales 1'); scrang -= 2;});
+        game.physics.arcade.overlap(eweapon4.bullets, player, function(sb1, splayer){splayer.kill(); console.log('dostales 1'); scrang -= 2;});
+      	game.physics.arcade.overlap(eweapon5.bullets, player, function(sb5, splayer){splayer.kill(); console.log('dostales 5'); scrang += 5;});
+        game.physics.arcade.overlap(bul5.bullets,     player, function(sb5, splayer){splayer.kill(); console.log('dostales 5'); scrang += 5;});
 
     	player.body.velocity.x = 0;
     	player.body.velocity.y = 0;
 
-    	if(cursors.left.isDown) {
-      	player.body.velocity.x -= 250;
-    	}
-    	if(cursors.right.isDown) {
-      	player.body.velocity.x += 250;
-    	}
+    	if(cursors.left.isDown)  {player.body.velocity.x -= 250;};
+    	if(cursors.right.isDown) {player.body.velocity.x += 250;};
   	}
-	};
+};
