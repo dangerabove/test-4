@@ -10,7 +10,7 @@ s_fizState.prototype = {
 	else if(45 * dif <= scrfiz) {scr = 4;}
 	else if(25 * dif <= scrfiz) {scr = 3;}
 	else if(10 * dif <= scrfiz) {scr = 2;}
-	else if(0  * dif <= scrfiz) {scr = 1;}
+	else {scr = 1;}
 
     var style = { font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
     text = game.add.text(80, 0, "Twoja ocena: " + scr, style);
