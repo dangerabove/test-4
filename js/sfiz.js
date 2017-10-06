@@ -5,7 +5,7 @@ s_fizState.prototype = {
 	
 	var scr = 0;
 	
-	if(75 * dif <= scrgeo) {scr = 6;}
+	if(75 * dif <= scrfiz) {scr = 6;}
 	else if(60 * dif <= scrfiz) {scr = 5;}
 	else if(45 * dif <= scrfiz) {scr = 4;}
 	else if(25 * dif <= scrfiz) {scr = 3;}
