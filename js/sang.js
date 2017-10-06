@@ -10,7 +10,7 @@ s_angState.prototype = {
 	else if(45 * dif <= scrang) {scr = 4;}		
 	else if(25 * dif <= scrang) {scr = 3;}
 	else if(10 * dif <= scrang) {scr = 2;}
-	else if(0  * dif <= scrang) {scr = 1;}
+	else {scr = 1;}
 
     var style = { font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
 	text = game.add.text(80, 0, "Twoja ocena: " + scr, style);
