@@ -207,7 +207,7 @@ m_angState.prototype = {
   	},
 
   	update: function() {
-      game.debug.body(player);
+      //game.debug.body(player);
 
         /*bul1.fireAtSprite(player);
         bul1.bulletSpeed = 200*dif;
