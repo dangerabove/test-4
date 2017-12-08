@@ -6,12 +6,13 @@ var bul5;
 var bullets;
 var style = { font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
 var style1 = { font: "bold 32px Arial", fill: "#ff0000", boundsAlignH: "center", boundsAlignV: "middle" };
+var style2 = { font: "bold 32px Arial", fill: "#000000", boundsAlignH: "center", boundsAlignV: "middle" };
 var pptext1;
 var pptext2;
 var pptext3;
 var dif = 1;
-var eb1s = 400;
-var eb2s = 300;
+var clock1 = 45;
+var clock2 = 0;
 
 
 m_ppState.prototype = {
@@ -25,12 +26,12 @@ m_ppState.prototype = {
     	game.physics.arcade.enable(player);
     	player.body.collideWorldBounds = true;
 		player.anchor.setTo(0.5, 0.5);
-		player.body.setSize(30, 60, 5, 5);
+		player.body.setSize(20, 55, 10, 2);
 
     	enemy = game.add.sprite(this.game.world.centerX, 400, 'p_pp');
     	enemy.anchor.setTo(0.5, 0.5);
     	game.physics.arcade.enable(enemy);
-		
+
     eweapon1 = game.add.weapon(30, 'sb1');
     eweapon1.bulletKillType = Phaser.Weapon.KILL_WORLD_BOUNDS;
     eweapon1.bulletSpeed = eb1s*dif*0.75;
@@ -69,6 +70,9 @@ m_ppState.prototype = {
     bul5.bulletAngleVariance = 33;
     bul5.trackSprite(enemy, 20, -200);
 
+    timer = game.add.text(0 , 0, clock1, style2);
+    timer.setTextBounds(50, 50, 900, 0);
+
     if(dif = 1) {
     game.time.events.loop(1250, this.fire1, this);
     game.time.events.loop(1500, this.fire2, this);
@@ -80,13 +84,13 @@ m_ppState.prototype = {
     //game.time.events.loop(1000, this.fire2, this);
     };
 
-      game.time.events.add(500  , this.text1    , this);
-      game.time.events.add(6000 , this.text1Kill, this);
-      game.time.events.add(17000, this.text2    , this);
-      game.time.events.add(25000, this.text2Kill, this);
-      game.time.events.add(35000, this.text3    , this);
-      game.time.events.add(45000, this.text3Kill, this);
-      game.time.events.add(60000, this.end      , this);
+      game.time.events.add(100  , this.text1    , this);
+      game.time.events.add(5000 , this.text1Kill, this);
+      game.time.events.add(15000, this.text2    , this);
+      game.time.events.add(20000, this.text2Kill, this);
+      game.time.events.add(30000, this.text3    , this);
+      game.time.events.add(35000, this.text3Kill, this);
+      game.time.events.add(45000, this.end      , this);
 
     	cursors = game.input.keyboard.createCursorKeys();
   	},
@@ -113,14 +117,14 @@ m_ppState.prototype = {
     text1Kill: function(){pptext1.kill();},
 
     text2: function(){
-      pptext2 = game.add.text(120, -70, "Bardzo dobrze, dostatecznie", style1);
+      pptext2 = game.add.text(120, -70, "Bardzo dobrze, dostatecznie...", style1);
       pptext2.setTextBounds(0, 100, 800, 100);
     },
 
     text2Kill: function(){pptext2.kill();},
 
     text3: function(){
-      pptext3 = game.add.text(120, -70, "Tetraplegia", style1);
+      pptext3 = game.add.text(120, -70, "Tetraplegia!", style1);
       pptext3.setTextBounds(0, 100, 800, 100);
     },
 
@@ -134,6 +138,10 @@ m_ppState.prototype = {
   	update: function() {
 
         bul5.fireAtSprite(player);
+
+        clock2 += 1;
+        if(clock2>=60) {clock1 -= 1; clock2 = 0};
+        timer.setText(clock1);
 
 		if(dif = 1) {if(eweapon1.fireRate > 401) {eweapon1.fireRate -= 1   ;};};
 		if(dif = 2) {if(eweapon1.fireRate > 351) {eweapon1.fireRate -= 1.25;};};
